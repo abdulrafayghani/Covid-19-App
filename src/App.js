@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { DataProvider } from './context/State';
+import { Header } from './components/header/Header';
+import { Background } from './components/Background/Background';
+import { Chart } from './components/chart/Chart';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <DataProvider>
+      <Suspense >
+          <Header /> 
+          <Background />
+         <Chart />
+        </Suspense>
+      </DataProvider>
+    </>
   );
-}
+};
 
 export default App;
